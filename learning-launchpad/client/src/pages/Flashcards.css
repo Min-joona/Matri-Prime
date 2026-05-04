@@ -1,0 +1,126 @@
+.flash-page {}
+.courses-subnav { background: var(--bg2); border-bottom: 1px solid var(--border); padding: 0.75rem 0; }
+.subnav-inner { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+.subnav-link {
+  padding: 0.45rem 1rem; border-radius: 8px;
+  font-size: 0.875rem; font-weight: 500; color: var(--text2);
+  background: var(--card); border: 1px solid var(--border);
+  transition: all var(--transition); text-decoration: none;
+}
+.subnav-link:hover, .subnav-link.active-sub { background: var(--primary); color: white; border-color: var(--primary); }
+
+.flash-picker {
+  display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem;
+  padding: 2.5rem 1.5rem;
+}
+.subject-card {
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center; gap: 0.75rem; padding: 2rem;
+  background: none; border: none; cursor: pointer; color: var(--text);
+  transition: all var(--transition);
+}
+.subject-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(0,0,0,0.4); }
+.sub-icon {
+  width: 64px; height: 64px; border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.8rem;
+}
+.subject-card h3 { font-size: 1.1rem; }
+.sub-count { color: var(--text3); font-size: 0.82rem; }
+
+.flash-hero-inner {
+  display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;
+}
+.flash-hero-inner > div { flex: 1; }
+.flash-hero-inner h1 { font-size: 1.8rem; margin-bottom: 0.25rem; }
+.flash-hero-inner p { color: var(--text2); }
+
+.flash-session { padding: 2rem 1.5rem; max-width: 700px; margin: 0 auto; }
+
+.flash-stats-bar {
+  display: flex; gap: 1.5rem; flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem; color: var(--text2); font-weight: 500;
+}
+.timer { margin-left: auto; font-variant-numeric: tabular-nums; }
+
+.flash-progress-row {
+  display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem;
+}
+.prog-label { font-size: 0.875rem; color: var(--text3); white-space: nowrap; }
+.prog-bar-bg { flex: 1; height: 6px; background: var(--card2); border-radius: 3px; overflow: hidden; }
+.prog-bar-fill { height: 100%; background: linear-gradient(90deg,var(--primary),var(--accent)); border-radius: 3px; transition: width 0.4s ease; }
+
+/* Flip card */
+.flash-card-wrap {
+  perspective: 1200px; cursor: pointer;
+  margin-bottom: 2rem; height: 220px;
+}
+.flash-card {
+  width: 100%; height: 100%;
+  position: relative; transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+  border-radius: var(--radius-lg);
+}
+.flash-card-wrap.flipped .flash-card { transform: rotateY(180deg); }
+.flash-front, .flash-back {
+  position: absolute; inset: 0;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 2.5rem;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  backface-visibility: hidden; text-align: center;
+}
+.flash-back { transform: rotateY(180deg); background: var(--card2); border-color: var(--primary); }
+.card-label {
+  position: absolute; top: 1rem; left: 1.5rem;
+  font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.06em; color: var(--text3);
+}
+.card-text { font-size: 1.1rem; line-height: 1.7; color: var(--text); max-width: 540px; }
+.click-hint { position: absolute; bottom: 1rem; font-size: 0.78rem; color: var(--text3); }
+
+.flash-actions { text-align: center; }
+.show-btn { padding: 0.9rem 3rem; }
+.key-hint { color: var(--text3); font-size: 0.78rem; margin-top: 0.75rem; }
+.full-hint { grid-column: 1/-1; text-align: center; margin-top: 0.5rem; }
+
+.grade-buttons {
+  display: grid; grid-template-columns: repeat(4,1fr); gap: 0.75rem;
+}
+.grade-btn {
+  display: flex; flex-direction: column; align-items: center; gap: 0.3rem;
+  padding: 1rem 0.75rem; border-radius: var(--radius);
+  background: var(--card); border: 1.5px solid var(--border);
+  cursor: pointer; color: var(--text); transition: all var(--transition);
+}
+.grade-btn:hover { transform: translateY(-2px); }
+.grade-1:hover { border-color: #ef4444; background: rgba(239,68,68,0.1); }
+.grade-2:hover { border-color: #f59e0b; background: rgba(245,158,11,0.1); }
+.grade-3:hover { border-color: #10b981; background: rgba(16,185,129,0.1); }
+.grade-4:hover { border-color: #3b82f6; background: rgba(59,130,246,0.1); }
+.grade-emoji { font-size: 1.5rem; }
+.grade-label { font-weight: 600; font-size: 0.875rem; }
+.grade-key { font-size: 0.72rem; color: var(--text3); }
+
+/* Complete */
+.session-complete { padding: 3rem 1.5rem; display: flex; justify-content: center; }
+.complete-card {
+  max-width: 500px; width: 100%; text-align: center; padding: 3rem;
+}
+.complete-icon { font-size: 3.5rem; margin-bottom: 1rem; }
+.complete-card h2 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+.complete-card p { color: var(--text2); margin-bottom: 2rem; }
+.complete-stats {
+  display: flex; gap: 1.5rem; justify-content: center; margin-bottom: 2rem;
+}
+.cs-item { display: flex; flex-direction: column; align-items: center; gap: 0.25rem; }
+.cs-num { font-size: 2rem; font-weight: 800; color: var(--primary-light); }
+.cs-item > span:last-child { font-size: 0.8rem; color: var(--text3); }
+.complete-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+@media(max-width:900px){ .flash-picker { grid-template-columns: repeat(2,1fr); } }
+@media(max-width:550px){
+  .flash-picker { grid-template-columns: 1fr 1fr; }
+  .grade-buttons { grid-template-columns: repeat(2,1fr); }
+  .flash-card-wrap { height: 260px; }
+}

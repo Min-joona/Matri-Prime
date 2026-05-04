@@ -1,0 +1,47 @@
+.scholarships-page {}
+.schol-layout {
+  display: grid; grid-template-columns: 260px 1fr; gap: 2rem;
+  padding: 2.5rem 1.5rem; align-items: start;
+}
+.filter-sidebar { padding: 1.5rem; position: sticky; top: 90px; }
+.filter-sidebar h3 { font-size: 1.1rem; margin-bottom: 1.25rem; }
+.filter-group { margin-bottom: 1.5rem; }
+.filter-group h4 { font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text3); margin-bottom: 0.75rem; }
+.filter-check {
+  display: flex; align-items: center; gap: 0.6rem;
+  font-size: 0.875rem; color: var(--text2); cursor: pointer;
+  padding: 0.3rem 0;
+}
+.filter-check input { accent-color: var(--primary); }
+
+.schol-search { margin-bottom: 1.5rem; }
+.schol-list { display: flex; flex-direction: column; gap: 1.25rem; }
+.schol-card { padding: 1.75rem; display: flex; flex-direction: column; gap: 0.75rem; }
+.schol-top { display: flex; align-items: center; justify-content: space-between; }
+.schol-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.save-btn {
+  background: none; border: 1.5px solid var(--border); border-radius: 20px;
+  padding: 0.3rem 0.85rem; font-size: 0.8rem; font-weight: 600;
+  color: var(--text2); cursor: pointer; transition: all var(--transition);
+}
+.save-btn:hover, .save-btn.saved { background: rgba(245,158,11,0.15); border-color: var(--accent2); color: var(--accent2); }
+.schol-meta { display: flex; gap: 1.25rem; flex-wrap: wrap; font-size: 0.8rem; color: var(--text3); }
+.schol-title { font-size: 1.05rem; line-height: 1.4; }
+.schol-desc { color: var(--text2); font-size: 0.875rem; line-height: 1.7; }
+.empty-state { text-align: center; color: var(--text3); padding: 3rem; font-size: 1rem; }
+
+.help-bubble { position: fixed; bottom: 2rem; right: 2rem; z-index: 999; }
+.help-btn {
+  display: flex; align-items: center; gap: 0.5rem;
+  background: linear-gradient(135deg,var(--primary),var(--accent));
+  color: white; padding: 0.75rem 1.25rem; border-radius: 50px;
+  font-weight: 600; font-size: 0.875rem; text-decoration: none;
+  box-shadow: 0 4px 20px rgba(79,70,229,0.4);
+  transition: transform var(--transition);
+}
+.help-btn:hover { transform: translateY(-2px); }
+
+@media(max-width:850px){
+  .schol-layout { grid-template-columns: 1fr; }
+  .filter-sidebar { position: static; }
+}

@@ -1,0 +1,50 @@
+.courses-page {}
+.page-hero { padding: 3.5rem 0 2.5rem; background: linear-gradient(135deg,var(--bg2),var(--bg3)); border-bottom: 1px solid var(--border); }
+.page-hero h1 { font-size: 2.2rem; margin-bottom: 0.5rem; }
+.page-hero p { color: var(--text2); font-size: 1.05rem; }
+
+.courses-subnav { background: var(--bg2); border-bottom: 1px solid var(--border); padding: 0.75rem 0; }
+.subnav-inner { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+.subnav-label { font-size: 0.8rem; font-weight: 700; color: var(--text3); text-transform: uppercase; letter-spacing: 0.05em; margin-right: 0.5rem; }
+.subnav-link {
+  padding: 0.45rem 1rem; border-radius: 8px;
+  font-size: 0.875rem; font-weight: 500; color: var(--text2);
+  background: var(--card); border: 1px solid var(--border);
+  transition: all var(--transition); text-decoration: none;
+}
+.subnav-link:hover { background: var(--primary); color: white; border-color: var(--primary); }
+
+.courses-filters {
+  display: flex; align-items: flex-start; gap: 1rem;
+  flex-wrap: wrap; margin-bottom: 2rem;
+}
+.cat-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+.all-courses-grid {
+  display: grid; grid-template-columns: repeat(4,1fr); gap: 1.25rem;
+}
+.course-card {
+  display: flex; flex-direction: column; gap: 0.75rem; padding: 1.5rem;
+}
+.cc-emoji {
+  width: 52px; height: 52px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; flex-shrink: 0;
+}
+.course-card h3 { font-size: 0.95rem; }
+.course-card p { color: var(--text2); font-size: 0.82rem; line-height: 1.6; flex: 1; }
+
+.help-bubble { position: fixed; bottom: 2rem; right: 2rem; z-index: 999; }
+.help-btn {
+  display: flex; align-items: center; gap: 0.5rem;
+  background: linear-gradient(135deg,var(--primary),var(--accent));
+  color: white; padding: 0.75rem 1.25rem; border-radius: 50px;
+  font-weight: 600; font-size: 0.875rem; text-decoration: none;
+  box-shadow: 0 4px 20px rgba(79,70,229,0.4);
+  transition: transform var(--transition);
+}
+.help-btn:hover { transform: translateY(-2px); }
+
+@media(max-width:1100px){ .all-courses-grid { grid-template-columns: repeat(3,1fr); } }
+@media(max-width:768px){ .all-courses-grid { grid-template-columns: repeat(2,1fr); } }
+@media(max-width:500px){ .all-courses-grid { grid-template-columns: 1fr; } }

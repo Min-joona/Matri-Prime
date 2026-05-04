@@ -1,0 +1,190 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  --background: #0F172A;
+  --card-bg: #1E293B;
+  --surface: #334155;
+  --primary: #6366F1;
+  --secondary: #F59E0B;
+  --accent: #10B981;
+  --danger: #EF4444;
+  --text-primary: #F8FAFC;
+  --text-muted: #94A3B8;
+  --text-secondary: #CBD5E1;
+}
+
+.light {
+  --background: #F8FAFC;
+  --card-bg: #FFFFFF;
+  --surface: #F1F5F9;
+  --text-primary: #0F172A;
+  --text-muted: #64748B;
+  --text-secondary: #475569;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  background-color: var(--background);
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-image: radial-gradient(circle at 1px 1px, rgba(99, 102, 241, 0.1) 1px, transparent 0);
+  background-size: 20px 20px;
+}
+
+.gradient-text {
+  @apply bg-gradient-primary bg-clip-text text-transparent;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
+  transform: translateY(-4px);
+}
+
+.btn-primary {
+  @apply bg-gradient-primary text-white font-semibold px-6 py-3 rounded-xl 
+         shadow-glow hover:shadow-glow/50 transition-all duration-300 
+         hover:-translate-y-1 active:translate-y-0 focus:outline-none focus:ring-2 
+         focus:ring-primary focus:ring-offset-2 focus:ring-offset-background;
+}
+
+.btn-secondary {
+  @apply bg-surface-background text-text-primary border-2 border-surface 
+         font-semibold px-6 py-3 rounded-xl hover:bg-surface 
+         transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0
+         focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 
+         focus:ring-offset-background;
+}
+
+.btn-ghost {
+  @apply bg-transparent text-text-primary border border-text-muted 
+         hover:bg-surface hover:border-surface font-medium px-4 py-2 rounded-lg
+         transition-all duration-300;
+}
+
+.input-field {
+  @apply bg-surface text-text-primary border border-surface rounded-xl 
+         px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary 
+         focus:border-primary transition-all duration-300 w-full
+         placeholder:text-text-muted;
+}
+
+.card-hover {
+  @apply transition-all duration-300 hover:-translate-y-2 hover:scale-105;
+}
+
+.streak-flame {
+  filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.5));
+  animation: flicker 2s ease-in-out infinite alternate;
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.9; transform: scale(1.05); }
+}
+
+.xp-pill {
+  @apply bg-gradient-primary text-white px-3 py-1 rounded-full text-sm font-bold
+         shadow-glow animate-pulse;
+}
+
+.progress-ring {
+  @apply w-16 h-16;
+}
+
+.level-badge {
+  @apply bg-accent text-white w-8 h-8 rounded-full flex items-center justify-center
+         font-bold text-sm shadow-glow-success;
+}
+
+@keyframes tilt {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(2deg); }
+  75% { transform: rotate(-2deg); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes confetti {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-tilt {
+  animation: tilt 10s infinite linear;
+}
+
+.animate-confetti {
+  animation: confetti 3s cubic-bezier(0.4, 0, 1, 1) infinite;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .btn-primary, .btn-secondary {
+    @apply py-2 text-sm;
+  }
+  
+  .glass-card {
+    backdrop-filter: blur(10px);
+  }
+}
+
+/* Motion reduced for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .glass-card {
+    border: 2px solid var(--primary);
+    background: var(--card-bg);
+  }
+}

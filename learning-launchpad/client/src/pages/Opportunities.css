@@ -1,0 +1,24 @@
+.opps-page {}
+.opp-filters { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2rem; }
+.opp-list { display: flex; flex-direction: column; gap: 1.25rem; }
+.opp-card { padding: 1.75rem; display: flex; flex-direction: column; gap: 0.75rem; }
+.opp-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
+.opp-type-badge {
+  display: inline-flex; align-items: center; padding: 0.25rem 0.85rem;
+  border-radius: 50px; font-size: 0.8rem; font-weight: 700;
+}
+.opp-deadline { font-size: 0.82rem; color: var(--text3); }
+.opp-title { font-size: 1.1rem; line-height: 1.4; }
+.opp-desc { color: var(--text2); font-size: 0.9rem; line-height: 1.7; flex: 1; }
+.opp-btn { align-self: flex-start; }
+
+.help-bubble { position: fixed; bottom: 2rem; right: 2rem; z-index: 999; }
+.help-btn {
+  display: flex; align-items: center; gap: 0.5rem;
+  background: linear-gradient(135deg,var(--primary),var(--accent));
+  color: white; padding: 0.75rem 1.25rem; border-radius: 50px;
+  font-weight: 600; font-size: 0.875rem; text-decoration: none;
+  box-shadow: 0 4px 20px rgba(79,70,229,0.4);
+  transition: transform var(--transition);
+}
+.help-btn:hover { transform: translateY(-2px); }
