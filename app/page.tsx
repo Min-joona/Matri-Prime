@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import { 
   Brain, 
   Video, 
-  Cards, 
+  Layers, 
   Target, 
   Award, 
   Users, 
@@ -39,7 +39,7 @@ export default function Home() {
     {
       title: 'Smart Flashcards',
       description: 'Anki-inspired SRS algorithm with beautiful glassmorphic design. Speed run mode included.',
-      icon: Cards,
+      icon: Layers,
       gradient: 'bg-gradient-to-br from-accent/20 to-accent/5',
       feature: 'Spaced repetition mastery'
     },
