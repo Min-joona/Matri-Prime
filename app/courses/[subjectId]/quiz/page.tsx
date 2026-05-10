@@ -258,9 +258,9 @@ function ResultsScreen({
     <motion.div
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
-      className="min-h-screen bg-[#0a0a0a] flex flex-col items-center justify-center p-4"
+      className="min-h-screen bg-background flex flex-col items-center justify-center p-4"
     >
-      <div className="max-w-md w-full bg-[#141414] border border-[#262626] rounded-2xl p-8 text-center">
+      <div className="max-w-md w-full bg-background-card border border-border rounded-2xl p-8 text-center">
         {/* Score Circle */}
         <div className="relative w-48 h-48 mx-auto mb-6">
           <svg width="192" height="192" className="-rotate-90">
@@ -269,7 +269,7 @@ function ResultsScreen({
               cy="96"
               r={radius}
               fill="none"
-              className="stroke-slate-700"
+              className="stroke-border"
               strokeWidth="12"
             />
             <motion.circle
@@ -291,11 +291,11 @@ function ResultsScreen({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
-              className="text-4xl font-bold text-white"
+              className="text-4xl font-bold text-text-primary"
             >
               {percentage}%
             </motion.span>
-            <span className="text-slate-400 text-sm">{correctCount}/{questions.length} correct</span>
+            <span className="text-text-muted text-sm">{correctCount}/{questions.length} correct</span>
           </div>
         </div>
 
@@ -305,10 +305,10 @@ function ResultsScreen({
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
         >
-          <h2 className="text-2xl font-bold text-white mb-2">
+          <h2 className="text-2xl font-bold text-text-primary mb-2">
             {percentage >= 80 ? 'Excellent Work!' : percentage >= 60 ? 'Good Job!' : 'Keep Practicing!'}
           </h2>
-          <p className="text-slate-400 mb-6">
+          <p className="text-text-muted mb-6">
             {percentage >= 80 
               ? 'You&apos;ve mastered this topic!' 
               : percentage >= 60 
@@ -324,19 +324,19 @@ function ResultsScreen({
           transition={{ delay: 0.5 }}
           className="grid grid-cols-2 gap-4 mb-6"
         >
-          <div className="bg-[#1f1f1f] rounded-xl p-4">
-            <div className="flex items-center justify-center gap-2 text-lime-500 mb-1">
+          <div className="bg-background-surface rounded-xl p-4">
+            <div className="flex items-center justify-center gap-2 text-primary mb-1">
               <Zap className="h-5 w-5" />
               <span className="font-bold text-lg">{xpEarned}</span>
             </div>
-            <p className="text-slate-400 text-sm">XP Earned</p>
+            <p className="text-text-muted text-sm">XP Earned</p>
           </div>
-          <div className="bg-[#1f1f1f] rounded-xl p-4">
-            <div className="flex items-center justify-center gap-2 text-lime-400 mb-1">
+          <div className="bg-background-surface rounded-xl p-4">
+            <div className="flex items-center justify-center gap-2 text-primary mb-1">
               <Clock className="h-5 w-5" />
               <span className="font-bold text-lg">{minutes}:{seconds.toString().padStart(2, '0')}</span>
             </div>
-            <p className="text-slate-400 text-sm">Time Taken</p>
+            <p className="text-text-muted text-sm">Time Taken</p>
           </div>
         </motion.div>
 
@@ -371,14 +371,14 @@ function ResultsScreen({
         >
           <button
             onClick={onRetry}
-            className="flex-1 flex items-center justify-center gap-2 bg-[#1f1f1f] border border-[#262626] hover:border-lime-500/50 text-white py-3 px-4 rounded-xl font-semibold transition-colors"
+            className="flex-1 flex items-center justify-center gap-2 bg-background-surface border border-border hover:border-primary/50 text-text-primary py-3 px-4 rounded-xl font-semibold transition-colors"
           >
             <RefreshCw className="h-5 w-5" />
             Retry Quiz
           </button>
           <button
             onClick={onBackToCourse}
-            className="flex-1 flex items-center justify-center gap-2 bg-lime-500 hover:bg-lime-400 text-black py-3 px-4 rounded-xl font-semibold transition-colors"
+            className="flex-1 flex items-center justify-center gap-2 bg-primary hover:bg-primary-light text-black py-3 px-4 rounded-xl font-semibold transition-colors"
           >
             Back to Course
             <ChevronRight className="h-5 w-5" />
@@ -386,7 +386,7 @@ function ResultsScreen({
         </motion.div>
 
         {/* Share Button */}
-        <button className="mt-4 flex items-center justify-center gap-2 text-slate-400 hover:text-white mx-auto transition-colors">
+        <button className="mt-4 flex items-center justify-center gap-2 text-text-muted hover:text-text-primary mx-auto transition-colors">
           <Share2 className="h-4 w-4" />
           Share Results
         </button>
@@ -574,10 +574,10 @@ export default function QuizPage() {
   // Loading state
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#0F172A] flex items-center justify-center">
+      <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="flex flex-col items-center gap-4">
-          <Loader2 className="h-8 w-8 text-indigo-500 animate-spin" />
-          <p className="text-slate-400">Loading quiz...</p>
+          <Loader2 className="h-8 w-8 text-primary animate-spin" />
+          <p className="text-text-muted">Loading quiz...</p>
         </div>
       </div>
     )
@@ -586,14 +586,14 @@ export default function QuizPage() {
   // Error state
   if (error || !quizState) {
     return (
-      <div className="min-h-screen bg-[#0F172A] flex items-center justify-center p-4">
-        <div className="bg-[#1E293B] rounded-xl p-6 max-w-md w-full text-center">
-          <AlertTriangle className="h-12 w-12 text-red-500 mx-auto mb-4" />
-          <h2 className="text-xl font-bold text-white mb-2">Error Loading Quiz</h2>
-          <p className="text-slate-400 mb-6">{error}</p>
+      <div className="min-h-screen bg-background flex items-center justify-center p-4">
+        <div className="bg-background-card border border-border rounded-xl p-6 max-w-md w-full text-center">
+          <AlertTriangle className="h-12 w-12 text-danger mx-auto mb-4" />
+          <h2 className="text-xl font-bold text-text-primary mb-2">Error Loading Quiz</h2>
+          <p className="text-text-muted mb-6">{error}</p>
           <button
             onClick={fetchQuiz}
-            className="inline-flex items-center gap-2 bg-indigo-500 hover:bg-indigo-600 text-white px-6 py-3 rounded-lg font-medium transition-colors"
+            className="inline-flex items-center gap-2 bg-primary hover:bg-primary-light text-black px-6 py-3 rounded-lg font-medium transition-colors"
           >
             <RefreshCw className="h-5 w-5" />
             Try Again
@@ -623,40 +623,40 @@ export default function QuizPage() {
 
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
-      case 'Easy': return 'bg-emerald-500/20 text-emerald-400'
-      case 'Medium': return 'bg-amber-500/20 text-amber-400'
-      case 'Hard': return 'bg-red-500/20 text-red-400'
-      default: return 'bg-slate-500/20 text-slate-400'
+      case 'Easy': return 'bg-primary/20 text-primary'
+      case 'Medium': return 'bg-warning/20 text-warning'
+      case 'Hard': return 'bg-danger/20 text-danger'
+      default: return 'bg-background-surface text-text-muted'
     }
   }
 
   const getOptionStyles = (index: number) => {
     if (!isCurrentSubmitted) {
       return selectedAnswer === index
-        ? 'border-indigo-500 bg-indigo-500/10'
-        : 'border-slate-700 bg-slate-800/50 hover:border-indigo-500/50'
+        ? 'border-primary bg-primary/10'
+        : 'border-border bg-background-surface hover:border-primary/50'
     }
 
     if (index === currentQuestion.correctIndex) {
-      return 'border-emerald-500 bg-emerald-500/20'
+      return 'border-primary bg-primary/20'
     }
 
     if (index === selectedAnswer && index !== currentQuestion.correctIndex) {
-      return 'border-red-500 bg-red-500/20'
+      return 'border-danger bg-danger/20'
     }
 
-    return 'border-slate-700 bg-slate-800/30 opacity-50'
+    return 'border-border bg-background-surface/30 opacity-50'
   }
 
   return (
-    <div className="min-h-screen bg-[#0F172A] flex flex-col">
+    <div className="min-h-screen bg-background flex flex-col">
       {/* Confetti */}
       <AnimatePresence>
         {showConfetti && <Confetti />}
       </AnimatePresence>
 
       {/* Top Bar */}
-      <header className="bg-[#1E293B] border-b border-slate-800 p-4">
+      <header className="bg-background-card border-b border-border p-4">
         <div className="max-w-2xl mx-auto flex items-center justify-between">
           <ProgressDots
             total={quizState.questions.length}
@@ -671,7 +671,7 @@ export default function QuizPage() {
             isWarning={timeRemaining <= 30}
           />
           
-          <div className="flex items-center gap-1 bg-indigo-500/20 text-indigo-400 px-3 py-1.5 rounded-full text-sm font-medium">
+          <div className="flex items-center gap-1 bg-primary/20 text-primary px-3 py-1.5 rounded-full text-sm font-medium">
             <Zap className="h-4 w-4" />
             {quizState.xpEarned} XP
           </div>
@@ -688,23 +688,23 @@ export default function QuizPage() {
           className="w-full max-w-2xl"
         >
           {/* Question */}
-          <div className="bg-[#1E293B] rounded-2xl p-6 mb-6">
+          <div className="bg-background-card border border-border rounded-2xl p-6 mb-6">
             <div className="flex items-center gap-2 mb-4">
               <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getDifficultyColor(currentQuestion.difficulty)}`}>
                 {currentQuestion.difficulty}
               </span>
-              <span className="px-3 py-1 rounded-full text-xs font-medium bg-slate-700 text-slate-300">
+              <span className="px-3 py-1 rounded-full text-xs font-medium bg-background-surface text-text-secondary">
                 {currentQuestion.chapter}
               </span>
             </div>
             
-            <h2 className="text-xl font-semibold text-white leading-relaxed">
+            <h2 className="text-xl font-semibold text-text-primary leading-relaxed">
               {currentQuestion.text}
             </h2>
 
             {currentQuestion.imageUrl && (
-              <div className="mt-4 bg-slate-800 rounded-xl p-4 flex items-center justify-center">
-                <span className="text-slate-500">Image placeholder</span>
+              <div className="mt-4 bg-background-surface rounded-xl p-4 flex items-center justify-center">
+                <span className="text-text-muted">Image placeholder</span>
               </div>
             )}
           </div>
@@ -720,12 +720,12 @@ export default function QuizPage() {
               >
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
                   isCurrentSubmitted && idx === currentQuestion.correctIndex
-                    ? 'bg-emerald-500 text-white'
+                    ? 'bg-primary text-black'
                     : isCurrentSubmitted && idx === selectedAnswer && idx !== currentQuestion.correctIndex
-                      ? 'bg-red-500 text-white'
+                      ? 'bg-danger text-white'
                       : selectedAnswer === idx
-                        ? 'bg-indigo-500 text-white'
-                        : 'bg-slate-700 text-slate-300'
+                        ? 'bg-primary text-black'
+                        : 'bg-background-surface text-text-secondary'
                 }`}>
                   {isCurrentSubmitted && idx === currentQuestion.correctIndex ? (
                     <Check className="h-5 w-5" />
@@ -737,10 +737,10 @@ export default function QuizPage() {
                 </div>
                 <span className={`text-base ${
                   isCurrentSubmitted && idx === currentQuestion.correctIndex
-                    ? 'text-emerald-400'
+                    ? 'text-primary'
                     : isCurrentSubmitted && idx === selectedAnswer && idx !== currentQuestion.correctIndex
-                      ? 'text-red-400'
-                      : 'text-white'
+                      ? 'text-danger'
+                      : 'text-text-primary'
                 }`}>
                   {option}
                 </span>
@@ -755,26 +755,26 @@ export default function QuizPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 20 }}
-                className="bg-[#1E293B] rounded-2xl p-6 mb-6"
+                className="bg-background-card border border-border rounded-2xl p-6 mb-6"
               >
                 <div className="flex items-center gap-2 mb-3">
                   {selectedAnswer === currentQuestion.correctIndex ? (
                     <>
-                      <div className="flex items-center gap-2 text-emerald-400">
+                      <div className="flex items-center gap-2 text-primary">
                         <Check className="h-5 w-5" />
                         <span className="font-semibold">Correct! +15 XP</span>
                       </div>
                     </>
                   ) : (
                     <>
-                      <div className="flex items-center gap-2 text-red-400">
+                      <div className="flex items-center gap-2 text-danger">
                         <X className="h-5 w-5" />
                         <span className="font-semibold">Not quite</span>
                       </div>
                     </>
                   )}
                 </div>
-                <p className="text-slate-300 leading-relaxed">{currentQuestion.explanation}</p>
+                <p className="text-text-secondary leading-relaxed">{currentQuestion.explanation}</p>
               </motion.div>
             )}
           </AnimatePresence>
@@ -784,14 +784,14 @@ export default function QuizPage() {
             <button
               onClick={handleSubmitAnswer}
               disabled={selectedAnswer === null}
-              className="w-full bg-gradient-to-r from-indigo-500 to-indigo-600 hover:from-indigo-600 hover:to-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed text-white py-4 rounded-xl font-semibold text-lg transition-all"
+              className="w-full bg-primary hover:bg-primary-light disabled:opacity-50 disabled:cursor-not-allowed text-black py-4 rounded-xl font-semibold text-lg transition-all"
             >
               Submit Answer
             </button>
           ) : (
             <button
               onClick={handleNextQuestion}
-              className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white py-4 rounded-xl font-semibold text-lg transition-all"
+              className="w-full flex items-center justify-center gap-2 bg-primary hover:bg-primary-light text-black py-4 rounded-xl font-semibold text-lg transition-all"
             >
               {quizState.currentIndex === quizState.questions.length - 1 ? 'See Results' : 'Next Question'}
               <ChevronRight className="h-5 w-5" />

@@ -81,59 +81,59 @@ function ContentRenderer({ content }: { content: LessonContent }) {
   switch (content.type) {
     case 'heading':
       return content.level === 2 ? (
-        <h2 className="text-2xl font-bold text-white mt-8 mb-4 pl-4 border-l-4 border-indigo-500">
+        <h2 className="text-2xl font-bold text-text-primary mt-8 mb-4 pl-4 border-l-4 border-primary">
           {content.text}
         </h2>
       ) : (
-        <h3 className="text-xl font-semibold text-white mt-6 mb-3 pl-4 border-l-4 border-indigo-400">
+        <h3 className="text-xl font-semibold text-text-primary mt-6 mb-3 pl-4 border-l-4 border-primary/70">
           {content.text}
         </h3>
       )
     
     case 'paragraph':
       return (
-        <p className="text-slate-300 text-base leading-relaxed mb-4 whitespace-pre-line">
+        <p className="text-text-secondary text-base leading-relaxed mb-4 whitespace-pre-line">
           {content.text}
         </p>
       )
     
     case 'key-concept':
       return (
-        <div className="bg-amber-500/10 border-l-4 border-amber-500 rounded-r-xl p-4 my-6">
+        <div className="bg-warning/10 border-l-4 border-warning rounded-r-xl p-4 my-6">
           <div className="flex items-center gap-2 mb-2">
-            <Lightbulb className="h-5 w-5 text-amber-500" />
-            <span className="font-semibold text-amber-400">{content.title}</span>
+            <Lightbulb className="h-5 w-5 text-warning" />
+            <span className="font-semibold text-warning">{content.title}</span>
           </div>
-          <p className="text-slate-300 text-base leading-relaxed">{content.text}</p>
+          <p className="text-text-secondary text-base leading-relaxed">{content.text}</p>
         </div>
       )
     
     case 'warning':
       return (
-        <div className="bg-red-500/10 border-l-4 border-red-500 rounded-r-xl p-4 my-6">
+        <div className="bg-danger/10 border-l-4 border-danger rounded-r-xl p-4 my-6">
           <div className="flex items-center gap-2 mb-2">
-            <AlertTriangle className="h-5 w-5 text-red-500" />
-            <span className="font-semibold text-red-400">{content.title}</span>
+            <AlertTriangle className="h-5 w-5 text-danger" />
+            <span className="font-semibold text-danger">{content.title}</span>
           </div>
-          <p className="text-slate-300 text-base leading-relaxed">{content.text}</p>
+          <p className="text-text-secondary text-base leading-relaxed">{content.text}</p>
         </div>
       )
     
     case 'exam-tip':
       return (
-        <div className="bg-emerald-500/10 border-l-4 border-emerald-500 rounded-r-xl p-4 my-6">
+        <div className="bg-primary/10 border-l-4 border-primary rounded-r-xl p-4 my-6">
           <div className="flex items-center gap-2 mb-2">
-            <GraduationCap className="h-5 w-5 text-emerald-500" />
-            <span className="font-semibold text-emerald-400">{content.title}</span>
+            <GraduationCap className="h-5 w-5 text-primary" />
+            <span className="font-semibold text-primary">{content.title}</span>
           </div>
-          <p className="text-slate-300 text-base leading-relaxed">{content.text}</p>
+          <p className="text-text-secondary text-base leading-relaxed">{content.text}</p>
         </div>
       )
     
     case 'formula':
       return (
         <div className="flex justify-center my-6">
-          <code className="bg-indigo-500/20 text-indigo-300 px-4 py-2 rounded-lg font-mono text-lg">
+          <code className="bg-primary/20 text-primary px-4 py-2 rounded-lg font-mono text-lg">
             {content.text}
           </code>
         </div>
@@ -141,15 +141,15 @@ function ContentRenderer({ content }: { content: LessonContent }) {
     
     case 'example':
       return (
-        <div className="bg-slate-800/50 rounded-xl p-5 my-6 border border-slate-700">
-          <h4 className="font-semibold text-white mb-4">{content.title}</h4>
+        <div className="bg-background-surface rounded-xl p-5 my-6 border border-border">
+          <h4 className="font-semibold text-text-primary mb-4">{content.title}</h4>
           <div className="space-y-2">
             {content.steps?.map((step, idx) => (
               <div key={idx} className="flex items-start gap-3">
-                <span className="flex-shrink-0 w-6 h-6 bg-indigo-500/20 rounded-full flex items-center justify-center text-indigo-400 text-sm font-medium">
+                <span className="flex-shrink-0 w-6 h-6 bg-primary/20 rounded-full flex items-center justify-center text-primary text-sm font-medium">
                   {idx + 1}
                 </span>
-                <p className="text-slate-300 text-base leading-relaxed font-mono text-sm">{step}</p>
+                <p className="text-text-secondary text-base leading-relaxed font-mono text-sm">{step}</p>
               </div>
             ))}
           </div>
@@ -175,7 +175,7 @@ function XPAnimation({ xp, onComplete }: { xp: number; onComplete: () => void })
       exit={{ opacity: 0, y: -100, scale: 0.5 }}
       className="fixed bottom-32 left-1/2 -translate-x-1/2 z-50"
     >
-      <div className="flex items-center gap-2 bg-emerald-500 text-white px-6 py-3 rounded-full shadow-lg shadow-emerald-500/30">
+      <div className="flex items-center gap-2 bg-primary text-black px-6 py-3 rounded-full shadow-lg shadow-primary/30">
         <Zap className="h-5 w-5" />
         <span className="font-bold text-lg">+{xp} XP</span>
       </div>

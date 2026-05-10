@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import { AuthProvider } from '@/lib/auth-context'
 import { QueryProvider } from '@/lib/query-provider'
+import { ThemeProvider } from '@/components/theme-provider'
 import { Navigation } from '@/components/navigation'
 import { MobileNav } from '@/components/mobile-nav'
 
@@ -37,19 +38,26 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="bg-background" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans bg-background text-text-primary antialiased`}>
-        <QueryProvider>
-          <AuthProvider>
-            <div className="min-h-screen flex flex-col">
-              <Navigation />
-              <main className="flex-1 relative">
-                {children}
-              </main>
-              <MobileNav />
-            </div>
-          </AuthProvider>
-        </QueryProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <QueryProvider>
+            <AuthProvider>
+              <div className="min-h-screen flex flex-col">
+                <Navigation />
+                <main className="flex-1 relative">
+                  {children}
+                </main>
+                <MobileNav />
+              </div>
+            </AuthProvider>
+          </QueryProvider>
+        </ThemeProvider>
       </body>
     </html>
   )

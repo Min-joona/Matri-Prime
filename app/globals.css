@@ -5,8 +5,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
+/* Light Mode (Default) */
 :root {
-  /* MatriPrime Brand - Neon Lime on Black */
+  /* MatriPrime Brand - Light Mode */
+  --background: #fafafa;
+  --background-card: #ffffff;
+  --background-surface: #f4f4f5;
+  --background-elevated: #e4e4e7;
+  --primary: #65a30d;
+  --primary-light: #84cc16;
+  --primary-dark: #4d7c0f;
+  --secondary: #16a34a;
+  --danger: #dc2626;
+  --warning: #d97706;
+  --text-primary: #0a0a0a;
+  --text-muted: #737373;
+  --text-secondary: #525252;
+  --border: #e4e4e7;
+  --border-light: #d4d4d8;
+}
+
+/* Dark Mode */
+.dark {
   --background: #0a0a0a;
   --background-card: #141414;
   --background-surface: #1f1f1f;
@@ -43,35 +63,50 @@ body {
 
 /* Gradient Text - Neon Lime */
 .gradient-text {
-  background: linear-gradient(135deg, #84cc16 0%, #a3e635 50%, #22c55e 100%);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 50%, var(--secondary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Glass Card - Dark Theme */
+/* Glass Card - Adapts to theme */
 .glass-card {
-  background: rgba(20, 20, 20, 0.8);
+  background: var(--background-card);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
   border-radius: 16px;
   transition: all 0.3s ease;
 }
 
+.dark .glass-card {
+  background: rgba(20, 20, 20, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
 .glass-card:hover {
+  background: var(--background-surface);
+  border: 1px solid var(--primary);
+  box-shadow: 0 0 30px rgba(132, 204, 22, 0.15);
+  transform: translateY(-4px);
+}
+
+.dark .glass-card:hover {
   background: rgba(31, 31, 31, 0.9);
   border: 1px solid rgba(132, 204, 22, 0.2);
   box-shadow: 0 0 30px rgba(132, 204, 22, 0.1);
-  transform: translateY(-4px);
 }
 
 /* Primary Button - Neon Lime */
 .btn-primary {
-  @apply bg-primary text-black font-semibold px-6 py-3 rounded-xl 
+  @apply bg-primary text-white font-semibold px-6 py-3 rounded-xl 
          shadow-glow hover:shadow-glow-lg transition-all duration-300 
          hover:-translate-y-1 hover:bg-primary-light active:translate-y-0 
          focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 
          focus:ring-offset-background;
+}
+
+.dark .btn-primary {
+  @apply text-black;
 }
 
 /* Secondary Button - Ghost Style */
@@ -121,7 +156,7 @@ body {
 }
 
 .neon-border {
-  border: 1px solid #84cc16;
+  border: 1px solid var(--primary);
   box-shadow: 0 0 10px rgba(132, 204, 22, 0.3),
               inset 0 0 10px rgba(132, 204, 22, 0.1);
 }
@@ -139,8 +174,12 @@ body {
 
 /* XP Pill */
 .xp-pill {
-  @apply bg-primary text-black px-3 py-1 rounded-full text-sm font-bold
+  @apply bg-primary text-white px-3 py-1 rounded-full text-sm font-bold
          shadow-glow animate-pulse;
+}
+
+.dark .xp-pill {
+  @apply text-black;
 }
 
 /* Progress Ring */
@@ -150,8 +189,12 @@ body {
 
 /* Level Badge */
 .level-badge {
-  @apply bg-primary text-black w-8 h-8 rounded-full flex items-center justify-center
+  @apply bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center
          font-bold text-sm shadow-glow;
+}
+
+.dark .level-badge {
+  @apply text-black;
 }
 
 /* Animations */
@@ -252,5 +295,9 @@ body {
 /* Selection */
 ::selection {
   background: rgba(132, 204, 22, 0.3);
+  color: var(--text-primary);
+}
+
+.dark ::selection {
   color: white;
 }
