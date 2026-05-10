@@ -25,7 +25,7 @@ export function CourseProgress() {
       totalLessons: 120,
       completedLessons: 78,
       lastAccessed: '2 hours ago',
-      thumbnail: 'bg-gradient-to-br from-primary to-blue-500',
+      thumbnail: 'bg-background-surface border border-primary/30',
     },
     {
       id: 'physics-grade-10',
@@ -35,7 +35,7 @@ export function CourseProgress() {
       totalLessons: 85,
       completedLessons: 36,
       lastAccessed: '1 day ago',
-      thumbnail: 'bg-gradient-to-br from-secondary to-orange-500',
+      thumbnail: 'bg-background-surface border border-primary/30',
     },
     {
       id: 'english-grade-10',
@@ -45,7 +45,7 @@ export function CourseProgress() {
       totalLessons: 60,
       completedLessons: 17,
       lastAccessed: '3 days ago',
-      thumbnail: 'bg-gradient-to-br from-accent to-green-500',
+      thumbnail: 'bg-background-surface border border-primary/30',
     },
   ]
 
@@ -65,7 +65,7 @@ export function CourseProgress() {
             <div className="flex items-start space-x-4">
               {/* Thumbnail */}
               <div className={`w-16 h-16 rounded-xl ${course.thumbnail} flex items-center justify-center shrink-0`}>
-                <BookOpen className="h-6 w-6 text-white" />
+                <BookOpen className="h-6 w-6 text-primary" />
               </div>
               
               {/* Course Info */}
@@ -85,12 +85,12 @@ export function CourseProgress() {
                       {course.progress}%
                     </span>
                   </div>
-                  <div className="h-2 bg-surface rounded-full overflow-hidden">
+                  <div className="h-2 bg-background-surface rounded-full overflow-hidden">
                     <motion.div
                       initial={{ width: 0 }}
                       animate={{ width: `${course.progress}%` }}
                       transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
-                      className="h-full bg-gradient-primary"
+                      className="h-full bg-primary"
                     />
                   </div>
                 </div>

@@ -8,52 +8,52 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        // MatriPrime Brand Colors - Neon Lime on Black
         primary: {
-          DEFAULT: "#6366F1",
-          light: "#818CF8",
-          dark: "#4F46E5",
+          DEFAULT: "#84cc16",
+          light: "#a3e635",
+          dark: "#65a30d",
+          glow: "rgba(132, 204, 22, 0.5)",
         },
         secondary: {
-          DEFAULT: "#F59E0B",
-          light: "#FBBF24",
-          dark: "#D97706",
+          DEFAULT: "#22c55e",
+          light: "#4ade80",
+          dark: "#16a34a",
         },
         accent: {
-          DEFAULT: "#10B981",
-          light: "#34D399",
-          dark: "#059669",
+          DEFAULT: "#84cc16",
+          light: "#a3e635",
+          dark: "#65a30d",
         },
         danger: {
-          DEFAULT: "#EF4444",
-          light: "#F87171",
-          dark: "#DC2626",
+          DEFAULT: "#ef4444",
+          light: "#f87171",
+          dark: "#dc2626",
+        },
+        warning: {
+          DEFAULT: "#f59e0b",
+          light: "#fbbf24",
+          dark: "#d97706",
         },
         background: {
-          DEFAULT: "#0F172A",
-          card: "#1E293B",
-          surface: "#334155",
+          DEFAULT: "#0a0a0a",
+          card: "#141414",
+          surface: "#1f1f1f",
+          elevated: "#2a2a2a",
         },
         text: {
-          primary: "#F8FAFC",
-          muted: "#94A3B8",
-          secondary: "#CBD5E1",
+          primary: "#ffffff",
+          muted: "#737373",
+          secondary: "#a3a3a3",
         },
-        slate: {
-          900: "#0F172A",
-          800: "#1E293B",
-          700: "#334155",
-          600: "#475569",
-          500: "#64748B",
-          400: "#94A3B8",
-          300: "#CBD5E1",
-          200: "#E2E8F0",
-          100: "#F1F5F9",
-          50: "#F8FAFC",
-        }
+        border: {
+          DEFAULT: "#262626",
+          light: "#404040",
+        },
       },
       fontFamily: {
         display: ["Inter", "system-ui", "sans-serif"],
-        body: ["Inter", "Geist", "system-ui", "sans-serif"],
+        body: ["Inter", "system-ui", "sans-serif"],
         mono: ["JetBrains Mono", "monospace"],
       },
       animation: {
@@ -64,6 +64,11 @@ module.exports = {
         "float": "float 6s ease-in-out infinite",
         "shake": "shake 0.5s ease-in-out",
         "confetti": "confetti 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        "glow-pulse": "glow-pulse 2s ease-in-out infinite",
+        "scroll": "scroll 30s linear infinite",
+        "scroll-reverse": "scroll-reverse 30s linear infinite",
+        "fade-up": "fade-up 0.5s ease-out",
+        "scale-in": "scale-in 0.3s ease-out",
       },
       keyframes: {
         gradient: {
@@ -88,16 +93,45 @@ module.exports = {
           "0%": { transform: "translateY(0) rotate(0deg)", opacity: "1" },
           "100%": { transform: "translateY(-100px) rotate(360deg)", opacity: "0" },
         },
+        "glow-pulse": {
+          "0%, 100%": { boxShadow: "0 0 20px rgba(132, 204, 22, 0.3)" },
+          "50%": { boxShadow: "0 0 40px rgba(132, 204, 22, 0.6)" },
+        },
+        "scroll": {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+        "scroll-reverse": {
+          "0%": { transform: "translateX(-50%)" },
+          "100%": { transform: "translateX(0)" },
+        },
+        "fade-up": {
+          "0%": { opacity: "0", transform: "translateY(20px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        "scale-in": {
+          "0%": { opacity: "0", transform: "scale(0.9)" },
+          "100%": { opacity: "1", transform: "scale(1)" },
+        },
       },
       boxShadow: {
-        "glow": "0 0 20px rgba(99, 102, 241, 0.3)",
-        "glow-success": "0 0 20px rgba(16, 185, 129, 0.3)",
+        "glow": "0 0 20px rgba(132, 204, 22, 0.3)",
+        "glow-lg": "0 0 40px rgba(132, 204, 22, 0.4)",
+        "glow-success": "0 0 20px rgba(34, 197, 94, 0.3)",
         "glow-danger": "0 0 20px rgba(239, 68, 68, 0.3)",
-        "glow-amber": "0 0 20px rgba(245, 158, 11, 0.3)",
+        "glow-warning": "0 0 20px rgba(245, 158, 11, 0.3)",
+        "card": "0 4px 20px rgba(0, 0, 0, 0.5)",
+        "card-hover": "0 8px 40px rgba(0, 0, 0, 0.7)",
       },
       backgroundImage: {
-        "gradient-primary": "linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%)",
-        "gradient-hero": "linear-gradient(135deg, #6366F1 0%, #3B82F6 30%, #8B5CF6 60%, #EC4899 100%)",
+        "gradient-primary": "linear-gradient(135deg, #84cc16 0%, #22c55e 100%)",
+        "gradient-dark": "linear-gradient(180deg, #0a0a0a 0%, #141414 100%)",
+        "gradient-card": "linear-gradient(145deg, #1f1f1f 0%, #141414 100%)",
+        "gradient-glow": "radial-gradient(circle at center, rgba(132, 204, 22, 0.15) 0%, transparent 70%)",
+      },
+      borderRadius: {
+        "2xl": "1rem",
+        "3xl": "1.5rem",
       },
       transitionTimingFunction: {
         'spring': 'cubic-bezier(0.4, 0, 0.2, 1)',

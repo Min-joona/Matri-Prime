@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import {
   BookOpen,
   Video,
-  Cards,
+  Layers,
   Target,
   ChevronDown,
   ChevronUp,
@@ -92,7 +92,7 @@ const getLessonIcon = (type: string) => {
   switch (type) {
     case 'notes': return BookOpen
     case 'video': return Video
-    case 'flashcards': return Cards
+    case 'flashcards': return Layers
     case 'quiz': return Target
     default: return BookOpen
   }
@@ -159,7 +159,7 @@ export default function SubjectDetail() {
                   <span>12,500 enrolled</span>
                 </div>
                 <div className="flex items-center space-x-1">
-                  <Star className="h-4 w-4 text-amber-400" />
+                  <Star className="h-4 w-4 text-primary" />
                   <span>4.9 rating</span>
                 </div>
               </div>
@@ -171,12 +171,12 @@ export default function SubjectDetail() {
                 <span className="text-text-muted">Progress</span>
                 <span className="text-primary font-bold">{progress}%</span>
               </div>
-              <div className="h-3 bg-surface rounded-full overflow-hidden">
+              <div className="h-3 bg-background-surface rounded-full overflow-hidden">
                 <motion.div
                   initial={{ width: 0 }}
                   animate={{ width: `${progress}%` }}
                   transition={{ duration: 0.8 }}
-                  className="h-full bg-gradient-primary"
+                  className="h-full bg-primary"
                 />
               </div>
               <p className="text-text-muted text-xs mt-1">
@@ -199,7 +199,7 @@ export default function SubjectDetail() {
               {/* Unit Header */}
               <div 
                 className={`p-6 cursor-pointer transition-colors ${
-                  expandedUnits.includes(unit.id) ? 'bg-primary/5' : 'hover:bg-surface'
+                  expandedUnits.includes(unit.id) ? 'bg-primary/5' : 'hover:bg-background-surface'
                 }`}
                 onClick={() => toggleUnit(unit.id)}
               >
@@ -213,14 +213,14 @@ export default function SubjectDetail() {
                       <p className="text-text-muted text-sm">
                         {unit.completedLessons}/{unit.totalLessons} Lessons
                       </p>
-                      <div className="w-24 h-2 bg-surface rounded-full overflow-hidden mt-1">
+                      <div className="w-24 h-2 bg-background-surface rounded-full overflow-hidden mt-1">
                         <div 
                           className="h-full bg-primary"
                           style={{ width: `${(unit.completedLessons / unit.totalLessons) * 100}%` }}
                         />
                       </div>
                     </div>
-                    <div className="p-2 rounded-full bg-surface hover:bg-surface-700 transition-colors">
+                    <div className="p-2 rounded-full bg-background-surface hover:bg-background-elevated transition-colors">
                       {expandedUnits.includes(unit.id) ? (
                         <ChevronUp className="h-5 w-5 text-text-primary" />
                       ) : (
@@ -239,7 +239,7 @@ export default function SubjectDetail() {
                     animate={{ height: 'auto', opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3 }}
-                    className="border-t border-white/10"
+                    className="border-t border-border"
                   >
                     <div className="p-6 space-y-3">
                       {unit.lessons.map((lesson, lessonIndex) => {
@@ -255,24 +255,24 @@ export default function SubjectDetail() {
                               href={lesson.locked ? '#' : `/courses/${subjectId}/${lesson.id}`}
                               className={`flex items-center space-x-4 p-4 rounded-xl transition-all ${
                                 lesson.locked 
-                                  ? 'bg-surface/50 cursor-not-allowed' 
+                                  ? 'bg-background-surface/50 cursor-not-allowed' 
                                   : lesson.completed
-                                    ? 'bg-accent/10 hover:bg-accent/20'
-                                    : 'bg-surface hover:bg-surface-700'
+                                    ? 'bg-primary/10 hover:bg-primary/20 border border-primary/20'
+                                    : 'bg-background-surface hover:bg-background-elevated border border-border'
                               }`}
                             >
                               {/* Icon/Status */}
                               <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${
                                 lesson.locked 
-                                  ? 'bg-surface-700' 
+                                  ? 'bg-background-elevated' 
                                   : lesson.completed
-                                    ? 'bg-accent/20'
-                                    : 'bg-primary/20'
+                                    ? 'bg-primary/20'
+                                    : 'bg-primary/10'
                               }`}>
                                 {lesson.locked ? (
                                   <Lock className="h-5 w-5 text-text-muted" />
                                 ) : lesson.completed ? (
-                                  <CheckCircle2 className="h-5 w-5 text-accent" />
+                                  <CheckCircle2 className="h-5 w-5 text-primary" />
                                 ) : (
                                   <Icon className="h-5 w-5 text-primary" />
                                 )}
@@ -281,7 +281,7 @@ export default function SubjectDetail() {
                               {/* Lesson Info */}
                               <div className="flex-1 min-w-0">
                                 <h3 className={`font-semibold truncate ${
-                                  lesson.completed ? 'text-accent' : 'text-text-primary'
+                                  lesson.completed ? 'text-primary' : 'text-text-primary'
                                 }`}>
                                   {lesson.title}
                                 </h3>
@@ -300,12 +300,12 @@ export default function SubjectDetail() {
                               {/* Type Badge */}
                               <span className={`px-2 py-1 rounded-full text-xs font-medium capitalize ${
                                 lesson.locked 
-                                  ? 'bg-surface-700 text-text-muted'
+                                  ? 'bg-background-elevated text-text-muted'
                                   : lesson.type === 'quiz' 
-                                    ? 'bg-secondary/20 text-secondary'
+                                    ? 'bg-warning/20 text-warning'
                                     : lesson.type === 'video'
                                       ? 'bg-primary/20 text-primary'
-                                      : 'bg-surface-700 text-text-muted'
+                                      : 'bg-background-elevated text-text-muted'
                               }`}>
                                 {lesson.type}
                               </span>

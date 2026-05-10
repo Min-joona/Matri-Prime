@@ -6,9 +6,9 @@ import Link from 'next/link'
 
 export function LeaderboardPreview() {
   const topStudents = [
-    { rank: 1, name: 'Yoseph M.', level: 42, xp: 12500, streak: 89, avatar: 'bg-amber-400' },
-    { rank: 2, name: 'Meron T.', level: 38, xp: 10800, streak: 76, avatar: 'bg-slate-400' },
-    { rank: 3, name: 'Bereket A.', level: 35, xp: 9500, streak: 64, avatar: 'bg-amber-600' },
+    { rank: 1, name: 'Yoseph M.', level: 42, xp: 12500, streak: 89, avatar: 'bg-primary' },
+    { rank: 2, name: 'Meron T.', level: 38, xp: 10800, streak: 76, avatar: 'bg-primary/70' },
+    { rank: 3, name: 'Bereket A.', level: 35, xp: 9500, streak: 64, avatar: 'bg-primary/50' },
   ]
   
   const myRank = { rank: 47, level: 12, xp: 3400, streak: 14 }
@@ -16,11 +16,11 @@ export function LeaderboardPreview() {
   const getRankIcon = (rank: number) => {
     switch (rank) {
       case 1:
-        return <Crown className="h-5 w-5 text-amber-400" />
+        return <Crown className="h-5 w-5 text-primary" />
       case 2:
-        return <Medal className="h-5 w-5 text-slate-400" />
+        return <Medal className="h-5 w-5 text-text-secondary" />
       case 3:
-        return <Medal className="h-5 w-5 text-amber-600" />
+        return <Medal className="h-5 w-5 text-warning" />
       default:
         return <span className="text-text-muted font-semibold">{rank}</span>
     }
@@ -30,7 +30,7 @@ export function LeaderboardPreview() {
     <div className="glass-card p-6">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center space-x-2">
-          <Trophy className="h-5 w-5 text-secondary" />
+          <Trophy className="h-5 w-5 text-primary" />
           <h2 className="text-xl font-bold text-text-primary">Weekly Leaderboard</h2>
         </div>
         <Link href="/leaderboard" className="text-primary text-sm hover:underline">
@@ -55,12 +55,12 @@ export function LeaderboardPreview() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className={`flex flex-col items-center ${order === 0 ? 'order-2' : order === 1 ? 'order-1' : 'order-3'}`}
             >
-              <div className={`w-10 h-10 rounded-full ${student.avatar} flex items-center justify-center mb-2 ${isFirst ? 'ring-4 ring-secondary/50' : ''}`}>
+              <div className={`w-10 h-10 rounded-full ${student.avatar} flex items-center justify-center mb-2 ${isFirst ? 'ring-4 ring-primary/50 shadow-glow' : ''}`}>
                 <span className="text-white font-bold text-sm">
                   {student.name.charAt(0)}
                 </span>
               </div>
-              <div className={`w-12 ${height} rounded-t-xl bg-gradient-to-t from-surface to-surface-700 flex items-end justify-center pb-2`}>
+              <div className={`w-12 ${height} rounded-t-xl bg-gradient-to-t from-background-surface to-background-elevated flex items-end justify-center pb-2`}>
                 <span className="text-text-primary font-bold">#{student.rank}</span>
               </div>
             </motion.div>
@@ -76,7 +76,7 @@ export function LeaderboardPreview() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.3, delay: index * 0.1 }}
-            className="flex items-center justify-between p-3 bg-surface rounded-xl hover:bg-surface-700 transition-colors"
+            className="flex items-center justify-between p-3 bg-background-surface rounded-xl hover:bg-background-elevated transition-colors border border-border"
           >
             <div className="flex items-center space-x-3">
               <div className="w-8 text-center">
@@ -94,7 +94,7 @@ export function LeaderboardPreview() {
             </div>
             <div className="text-right">
               <p className="font-bold text-text-primary text-sm">{student.xp.toLocaleString()} XP</p>
-              <p className="text-text-muted text-xs">{student.streak}🔥</p>
+              <p className="text-text-muted text-xs">{student.streak} days</p>
             </div>
           </motion.div>
         ))}
@@ -113,8 +113,8 @@ export function LeaderboardPreview() {
               </div>
             </div>
             <div className="text-right">
-              <p className="font-bold text-text-primary text-sm">{myRank.xp.toLocaleString()} XP</p>
-              <p className="text-text-muted text-xs">{myRank.streak}🔥</p>
+              <p className="font-bold text-primary text-sm">{myRank.xp.toLocaleString()} XP</p>
+              <p className="text-text-muted text-xs">{myRank.streak} days</p>
             </div>
           </div>
         </div>
@@ -122,7 +122,7 @@ export function LeaderboardPreview() {
       
       {/* League Info */}
       <div className="mt-4 text-center">
-        <span className="inline-flex items-center px-3 py-1 bg-amber-500/20 text-amber-400 rounded-full text-xs font-semibold">
+        <span className="inline-flex items-center px-3 py-1 bg-primary/20 text-primary rounded-full text-xs font-semibold">
           <Trophy className="h-3 w-3 mr-1" />
           Bronze League
         </span>

@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { 
   BookOpen, 
-  Cards, 
+  Layers, 
   Target, 
   Clock, 
   TrendingUp, 
@@ -44,7 +44,7 @@ export default function Dashboard() {
   
   const sidebarItems = [
     { name: 'My Courses', path: '/courses', icon: BookOpen },
-    { name: 'Flashcards', path: '/flashcards', icon: Cards },
+    { name: 'Flashcards', path: '/flashcards', icon: Layers },
     { name: 'Quizzes', path: '/quizzes', icon: Target },
     { name: 'Saved', path: '/saved', icon: Bookmark },
     { name: 'Settings', path: '/settings', icon: Settings },
@@ -52,9 +52,9 @@ export default function Dashboard() {
   
   const quickStats = [
     { label: 'Study Time', value: `${Math.floor(totalStudyTime)}h`, icon: Clock, color: 'text-primary' },
-    { label: 'Questions', value: totalQuestions.toLocaleString(), icon: Zap, color: 'text-secondary' },
-    { label: 'Avg Score', value: `${averageScore}%`, icon: TrendingUp, color: 'text-accent' },
-    { label: 'PrimeCoins', value: primeCoins, icon: Trophy, color: 'text-amber-400' },
+    { label: 'Questions', value: totalQuestions.toLocaleString(), icon: Zap, color: 'text-primary' },
+    { label: 'Avg Score', value: `${averageScore}%`, icon: TrendingUp, color: 'text-primary' },
+    { label: 'PrimeCoins', value: primeCoins, icon: Trophy, color: 'text-warning' },
   ]
 
   return (
@@ -104,9 +104,9 @@ export default function Dashboard() {
                 </div>
                 
                 {/* Streak */}
-                <div className="flex items-center justify-between bg-background-card p-3 rounded-xl">
+                <div className="flex items-center justify-between bg-background-surface border border-border p-3 rounded-xl">
                   <div className="flex items-center space-x-2">
-                    <Flame className="h-5 w-5 text-secondary streak-flame" />
+                    <Flame className="h-5 w-5 text-primary streak-flame" />
                     <span className="font-bold text-text-primary">{streak} DAYS</span>
                   </div>
                   <span className="text-text-muted text-sm">On Fire!</span>
@@ -158,9 +158,9 @@ export default function Dashboard() {
             >
               <div className="relative z-10">
                 <div className="flex items-center space-x-2 mb-2">
-                  <Flame className="h-6 w-6 text-secondary" />
+                  <Flame className="h-6 w-6 text-primary" />
                   <span className="text-2xl font-bold gradient-text">
-                    {streak > 7 ? '🔥 You're Unstoppable!' : streak > 3 ? 'Keep That Streak Going!' : 'Start Your Streak Today!'}
+                    {streak > 7 ? 'You&apos;re Unstoppable!' : streak > 3 ? 'Keep That Streak Going!' : 'Start Your Streak Today!'}
                   </span>
                 </div>
                 <p className="text-text-muted mb-4">
@@ -173,7 +173,7 @@ export default function Dashboard() {
               </div>
               
               {/* Decorative Element */}
-              <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-secondary/10 rounded-full blur-3xl" />
+              <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl" />
             </motion.div>
             
             {/* Daily Quests */}

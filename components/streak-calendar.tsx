@@ -21,11 +21,11 @@ export function StreakCalendar() {
   const currentStreak = 47
 
   const getColor = (hasActivity: boolean, intensity: number) => {
-    if (!hasActivity) return 'bg-surface hover:bg-surface-600'
+    if (!hasActivity) return 'bg-background-surface hover:bg-background-elevated'
     const colors = {
-      1: 'bg-secondary/40 hover:bg-secondary/60',
-      2: 'bg-secondary/70 hover:bg-secondary/80',
-      3: 'bg-secondary hover:bg-secondary/90',
+      1: 'bg-primary/30 hover:bg-primary/50',
+      2: 'bg-primary/60 hover:bg-primary/80',
+      3: 'bg-primary hover:bg-primary-light',
     }
     return colors[intensity as keyof typeof colors] || colors[1]
   }
@@ -38,7 +38,7 @@ export function StreakCalendar() {
           <h2 className="text-xl font-bold text-text-primary">Study Streak</h2>
         </div>
         <div className="flex items-center space-x-2">
-          <Flame className="h-5 w-5 text-secondary" />
+          <Flame className="h-5 w-5 text-primary streak-flame" />
           <span className="font-bold text-text-primary">{currentStreak} Days</span>
         </div>
       </div>
@@ -61,10 +61,10 @@ export function StreakCalendar() {
       <div className="flex items-center justify-between mt-4 text-xs text-text-muted">
         <span>Less</span>
         <div className="flex space-x-1">
-          <div className="w-3 h-3 rounded-sm bg-surface" />
-          <div className="w-3 h-3 rounded-sm bg-secondary/40" />
-          <div className="w-3 h-3 rounded-sm bg-secondary/70" />
-          <div className="w-3 h-3 rounded-sm bg-secondary" />
+          <div className="w-3 h-3 rounded-sm bg-background-surface" />
+          <div className="w-3 h-3 rounded-sm bg-primary/30" />
+          <div className="w-3 h-3 rounded-sm bg-primary/60" />
+          <div className="w-3 h-3 rounded-sm bg-primary" />
         </div>
         <span>More</span>
       </div>

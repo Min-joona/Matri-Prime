@@ -38,6 +38,10 @@ const userSchema = new mongoose.Schema({
     type: Number,
     default: 0
   },
+  streakFreezes: {
+    type: Number,
+    default: 2
+  },
   lastActivityDate: {
     type: Date,
     default: null
@@ -97,6 +101,36 @@ const userSchema = new mongoose.Schema({
   },
   subjects: [{
     type: String
+  }],
+  
+  // Subject Progress Tracking
+  subjectProgress: [{
+    subjectId: String,
+    completedLessons: [String],
+    totalLessons: Number,
+    quizzes: {
+      attempts: [{
+        date: Date,
+        score: Number,
+        totalQuestions: Number,
+        percentage: Number,
+        timeTaken: Number,
+        chapter: String,
+        xpEarned: Number
+      }],
+      averageScore: { type: Number, default: 0 },
+      bestScore: { type: Number, default: 0 },
+      totalAttempts: { type: Number, default: 0 }
+    },
+    flashcards: {
+      totalCards: { type: Number, default: 0 },
+      masteredCards: { type: Number, default: 0 },
+      learningCards: { type: Number, default: 0 },
+      newCards: { type: Number, default: 0 }
+    },
+    timeSpent: { type: Number, default: 0 },
+    xpEarned: { type: Number, default: 0 },
+    lastAccessedAt: Date
   }],
   
   // Settings

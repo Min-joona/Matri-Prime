@@ -136,11 +136,27 @@ app.use('/api/courses', require('./routes/courses'));
 app.use('/api/leaderboard', require('./routes/leaderboard'));
 app.use('/api/socket', require('./routes/socket'));
 
-// AI Study Companion Route
-app.use('/api/ai', require('./routes/ai-companion'));
+// AI Study Companion Route - stub if not implemented
+try {
+  app.use('/api/ai', require('./routes/ai-companion'));
+} catch (err) {
+  const stubRouter = express.Router();
+  stubRouter.all('*', (req, res) => {
+    res.status(501).json({ error: 'AI Companion feature not yet implemented' });
+  });
+  app.use('/api/ai', stubRouter);
+}
 
-// Community Features Route
-app.use('/api/community', require('./routes/community'));
+// Community Features Route - stub if not implemented
+try {
+  app.use('/api/community', require('./routes/community'));
+} catch (err) {
+  const stubRouter = express.Router();
+  stubRouter.all('*', (req, res) => {
+    res.status(501).json({ error: 'Community feature not yet implemented' });
+  });
+  app.use('/api/community', stubRouter);
+}
 
 // Health check
 app.get('/health', (req, res) => {

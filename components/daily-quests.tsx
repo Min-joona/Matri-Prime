@@ -36,21 +36,21 @@ export function DailyQuests() {
               transition={{ duration: 0.3, delay: index * 0.1 }}
               className={`p-4 rounded-xl border transition-all ${
                 isCompleted 
-                  ? 'bg-accent/10 border-accent/30' 
-                  : 'bg-surface border-white/10'
+                  ? 'bg-primary/10 border-primary/30' 
+                  : 'bg-background-surface border-border'
               }`}
             >
               <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center space-x-3">
-                  <div className={`p-2 rounded-lg ${isCompleted ? 'bg-accent' : 'bg-primary'}`}>
+                  <div className={`p-2 rounded-lg ${isCompleted ? 'bg-primary' : 'bg-primary/20'}`}>
                     {isCompleted ? (
-                      <CheckCircle2 className="h-5 w-5 text-white" />
+                      <CheckCircle2 className="h-5 w-5 text-black" />
                     ) : (
-                      <Icon className="h-5 w-5 text-white" />
+                      <Icon className="h-5 w-5 text-primary" />
                     )}
                   </div>
                   <div>
-                    <h3 className={`font-semibold ${isCompleted ? 'text-accent' : 'text-text-primary'}`}>
+                    <h3 className={`font-semibold ${isCompleted ? 'text-primary' : 'text-text-primary'}`}>
                       {quest.title}
                     </h3>
                     <p className="text-text-muted text-sm">{quest.description}</p>
@@ -67,18 +67,16 @@ export function DailyQuests() {
                   <span className="text-text-muted">
                     {quest.progress}/{quest.target}
                   </span>
-                  <span className={isCompleted ? 'text-accent' : 'text-primary'}>
+                  <span className={isCompleted ? 'text-primary' : 'text-primary'}>
                     {Math.round(progressPercentage)}%
                   </span>
                 </div>
-                <div className="h-2 bg-surface-700 rounded-full overflow-hidden">
+                <div className="h-2 bg-background-elevated rounded-full overflow-hidden">
                   <motion.div
                     initial={{ width: 0 }}
                     animate={{ width: `${progressPercentage}%` }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className={`h-full rounded-full ${
-                      isCompleted ? 'bg-accent' : 'bg-primary'
-                    }`}
+                    className="h-full rounded-full bg-primary"
                   />
                 </div>
               </div>

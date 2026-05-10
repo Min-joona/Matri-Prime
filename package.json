@@ -12,31 +12,40 @@
     "fullstack": "concurrently \"npm run backend\" \"npm run dev\""
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.62.10",
+    "axios": "^1.7.9",
+    "bcryptjs": "^3.0.3",
+    "clsx": "^2.1.1",
+    "compression": "^1.8.1",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.5.1",
+    "firebase": "^11.0.2",
+    "framer-motion": "^11.18.2",
+    "helmet": "^8.1.0",
+    "lucide-react": "^0.468.0",
+    "mongoose": "^9.6.2",
+    "morgan": "^1.10.1",
     "next": "^15.1.0",
+    "openai": "^4.76.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "typescript": "^5.3.3",
-    "firebase": "^11.0.2",
-    "zustand": "^5.0.2",
-    "framer-motion": "^11.15.0",
     "socket.io-client": "^4.8.1",
-    "@tanstack/react-query": "^5.62.10",
-    "openai": "^4.76.0",
-    "axios": "^1.7.9",
-    "lucide-react": "^0.468.0",
-    "clsx": "^2.1.1",
-    "tailwind-merge": "^2.5.5"
+    "tailwind-merge": "^2.5.5",
+    "typescript": "^5.3.3",
+    "zustand": "^5.0.2"
   },
   "devDependencies": {
     "@types/node": "^20.10.5",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
+    "autoprefixer": "^10.4.16",
+    "concurrently": "^8.2.2",
     "eslint": "^8.56.0",
     "eslint-config-next": "^15.1.0",
     "postcss": "^8.4.32",
-    "tailwindcss": "^4.0.0",
-    "autoprefixer": "^10.4.16",
-    "concurrently": "^8.2.2"
+    "tailwindcss": "^4.0.0"
   },
   "engines": {
     "node": ">=18.0.0"

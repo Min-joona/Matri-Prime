@@ -48,7 +48,7 @@ const subjects: Subject[] = [
     enrolled: 12500,
     rating: 4.9,
     color: 'text-primary',
-    gradient: 'bg-gradient-to-br from-primary/20 to-blue-500/10',
+    gradient: 'bg-background-surface border border-primary/20',
   },
   {
     id: 'physics',
@@ -60,8 +60,8 @@ const subjects: Subject[] = [
     totalLessons: 360,
     enrolled: 8900,
     rating: 4.8,
-    color: 'text-secondary',
-    gradient: 'bg-gradient-to-br from-secondary/20 to-orange-500/10',
+    color: 'text-primary',
+    gradient: 'bg-background-surface border border-primary/20',
   },
   {
     id: 'chemistry',
@@ -73,8 +73,8 @@ const subjects: Subject[] = [
     totalLessons: 320,
     enrolled: 7600,
     rating: 4.7,
-    color: 'text-accent',
-    gradient: 'bg-gradient-to-br from-accent/20 to-teal-500/10',
+    color: 'text-primary',
+    gradient: 'bg-background-surface border border-primary/20',
   },
   {
     id: 'biology',
@@ -86,8 +86,8 @@ const subjects: Subject[] = [
     totalLessons: 400,
     enrolled: 9800,
     rating: 4.8,
-    color: 'text-accent',
-    gradient: 'bg-gradient-to-br from-emerald-500/20 to-green-500/10',
+    color: 'text-primary',
+    gradient: 'bg-background-surface border border-primary/20',
   },
   {
     id: 'english',
@@ -99,8 +99,8 @@ const subjects: Subject[] = [
     totalLessons: 300,
     enrolled: 15600,
     rating: 4.9,
-    color: 'text-secondary',
-    gradient: 'bg-gradient-to-br from-amber-500/20 to-yellow-500/10',
+    color: 'text-primary',
+    gradient: 'bg-background-surface border border-primary/20',
   },
   {
     id: 'civics',
@@ -113,7 +113,7 @@ const subjects: Subject[] = [
     enrolled: 6800,
     rating: 4.6,
     color: 'text-primary',
-    gradient: 'bg-gradient-to-br from-indigo-500/20 to-purple-500/10',
+    gradient: 'bg-background-surface border border-primary/20',
   },
   {
     id: 'geography',
@@ -125,8 +125,8 @@ const subjects: Subject[] = [
     totalLessons: 240,
     enrolled: 6200,
     rating: 4.7,
-    color: 'text-accent',
-    gradient: 'bg-gradient-to-br from-teal-500/20 to-cyan-500/10',
+    color: 'text-primary',
+    gradient: 'bg-background-surface border border-primary/20',
   },
   {
     id: 'history',
@@ -138,8 +138,8 @@ const subjects: Subject[] = [
     totalLessons: 280,
     enrolled: 5900,
     rating: 4.7,
-    color: 'text-secondary',
-    gradient: 'bg-gradient-to-br from-rose-500/20 to-red-500/10',
+    color: 'text-primary',
+    gradient: 'bg-background-surface border border-primary/20',
   },
   {
     id: 'economics',
@@ -152,7 +152,7 @@ const subjects: Subject[] = [
     enrolled: 4500,
     rating: 4.8,
     color: 'text-primary',
-    gradient: 'bg-gradient-to-br from-blue-500/20 to-indigo-500/10',
+    gradient: 'bg-background-surface border border-primary/20',
   },
   {
     id: 'it',
@@ -164,8 +164,8 @@ const subjects: Subject[] = [
     totalLessons: 300,
     enrolled: 7200,
     rating: 4.9,
-    color: 'text-accent',
-    gradient: 'bg-gradient-to-br from-cyan-500/20 to-blue-500/10',
+    color: 'text-primary',
+    gradient: 'bg-background-surface border border-primary/20',
   },
 ]
 
@@ -233,8 +233,8 @@ export default function Courses() {
                 onClick={() => setSelectedGrade(grade)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                   selectedGrade === grade
-                    ? 'bg-primary text-white shadow-glow'
-                    : 'bg-surface text-text-muted hover:bg-surface-700 hover:text-text-primary'
+                    ? 'bg-primary text-black shadow-glow'
+                    : 'bg-background-surface text-text-muted hover:bg-background-elevated hover:text-text-primary border border-border'
                 }`}
               >
                 {grade === 'all' ? 'All Grades' : `Grade ${grade}`}
@@ -264,7 +264,7 @@ export default function Courses() {
                       <div className={`w-14 h-14 ${subject.gradient} rounded-2xl flex items-center justify-center`}>
                         <Icon className={`h-7 w-7 ${subject.color}`} />
                       </div>
-                      <div className="flex items-center space-x-1 text-amber-400">
+                      <div className="flex items-center space-x-1 text-primary">
                         <Star className="h-4 w-4 fill-current" />
                         <span className="text-sm font-semibold">{subject.rating}</span>
                       </div>
@@ -291,7 +291,7 @@ export default function Courses() {
                     </div>
                     
                     {/* Footer */}
-                    <div className="flex items-center justify-between pt-4 border-t border-white/10">
+                    <div className="flex items-center justify-between pt-4 border-t border-border">
                       <div className="flex items-center space-x-1 text-text-muted text-sm">
                         <Users className="h-4 w-4" />
                         <span>{subject.enrolled.toLocaleString()} enrolled</span>
@@ -304,7 +304,7 @@ export default function Courses() {
                       {subject.gradeLevels.map((grade) => (
                         <span
                           key={grade}
-                          className="px-2 py-1 bg-surface text-text-muted text-xs rounded-full"
+                          className="px-2 py-1 bg-background-surface text-text-muted text-xs rounded-full border border-border"
                         >
                           G{grade}
                         </span>

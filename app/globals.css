@@ -6,25 +6,22 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 :root {
-  --background: #0F172A;
-  --card-bg: #1E293B;
-  --surface: #334155;
-  --primary: #6366F1;
-  --secondary: #F59E0B;
-  --accent: #10B981;
-  --danger: #EF4444;
-  --text-primary: #F8FAFC;
-  --text-muted: #94A3B8;
-  --text-secondary: #CBD5E1;
-}
-
-.light {
-  --background: #F8FAFC;
-  --card-bg: #FFFFFF;
-  --surface: #F1F5F9;
-  --text-primary: #0F172A;
-  --text-muted: #64748B;
-  --text-secondary: #475569;
+  /* MatriPrime Brand - Neon Lime on Black */
+  --background: #0a0a0a;
+  --background-card: #141414;
+  --background-surface: #1f1f1f;
+  --background-elevated: #2a2a2a;
+  --primary: #84cc16;
+  --primary-light: #a3e635;
+  --primary-dark: #65a30d;
+  --secondary: #22c55e;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --text-primary: #ffffff;
+  --text-muted: #737373;
+  --text-secondary: #a3a3a3;
+  --border: #262626;
+  --border-light: #404040;
 }
 
 * {
@@ -44,64 +41,94 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-body {
-  background-image: radial-gradient(circle at 1px 1px, rgba(99, 102, 241, 0.1) 1px, transparent 0);
-  background-size: 20px 20px;
-}
-
+/* Gradient Text - Neon Lime */
 .gradient-text {
-  @apply bg-gradient-primary bg-clip-text text-transparent;
+  background: linear-gradient(135deg, #84cc16 0%, #a3e635 50%, #22c55e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
+/* Glass Card - Dark Theme */
 .glass-card {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(20, 20, 20, 0.8);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 16px;
   transition: all 0.3s ease;
 }
 
 .glass-card:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
+  background: rgba(31, 31, 31, 0.9);
+  border: 1px solid rgba(132, 204, 22, 0.2);
+  box-shadow: 0 0 30px rgba(132, 204, 22, 0.1);
   transform: translateY(-4px);
 }
 
+/* Primary Button - Neon Lime */
 .btn-primary {
-  @apply bg-gradient-primary text-white font-semibold px-6 py-3 rounded-xl 
-         shadow-glow hover:shadow-glow/50 transition-all duration-300 
-         hover:-translate-y-1 active:translate-y-0 focus:outline-none focus:ring-2 
-         focus:ring-primary focus:ring-offset-2 focus:ring-offset-background;
-}
-
-.btn-secondary {
-  @apply bg-surface-background text-text-primary border-2 border-surface 
-         font-semibold px-6 py-3 rounded-xl hover:bg-surface 
-         transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0
+  @apply bg-primary text-black font-semibold px-6 py-3 rounded-xl 
+         shadow-glow hover:shadow-glow-lg transition-all duration-300 
+         hover:-translate-y-1 hover:bg-primary-light active:translate-y-0 
          focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 
          focus:ring-offset-background;
 }
 
+/* Secondary Button - Ghost Style */
+.btn-secondary {
+  @apply bg-transparent text-text-primary border border-border 
+         font-semibold px-6 py-3 rounded-xl hover:bg-background-surface 
+         hover:border-primary/50 transition-all duration-300 
+         hover:-translate-y-0.5 active:translate-y-0
+         focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 
+         focus:ring-offset-background;
+}
+
+/* Ghost Button */
 .btn-ghost {
-  @apply bg-transparent text-text-primary border border-text-muted 
-         hover:bg-surface hover:border-surface font-medium px-4 py-2 rounded-lg
+  @apply bg-transparent text-text-secondary border border-transparent 
+         hover:bg-background-surface hover:text-text-primary font-medium px-4 py-2 rounded-lg
          transition-all duration-300;
 }
 
+/* Input Field */
 .input-field {
-  @apply bg-surface text-text-primary border border-surface rounded-xl 
+  @apply bg-background-surface text-text-primary border border-border rounded-xl 
          px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary 
          focus:border-primary transition-all duration-300 w-full
          placeholder:text-text-muted;
 }
 
-.card-hover {
-  @apply transition-all duration-300 hover:-translate-y-2 hover:scale-105;
+/* Card Styles */
+.card {
+  @apply bg-background-card border border-border rounded-2xl p-6 
+         transition-all duration-300;
 }
 
+.card:hover {
+  @apply border-primary/30 shadow-glow;
+}
+
+.card-hover {
+  @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-card-hover;
+}
+
+/* Neon Glow Effect */
+.neon-glow {
+  box-shadow: 0 0 20px rgba(132, 204, 22, 0.3),
+              0 0 40px rgba(132, 204, 22, 0.2),
+              0 0 60px rgba(132, 204, 22, 0.1);
+}
+
+.neon-border {
+  border: 1px solid #84cc16;
+  box-shadow: 0 0 10px rgba(132, 204, 22, 0.3),
+              inset 0 0 10px rgba(132, 204, 22, 0.1);
+}
+
+/* Streak Flame Animation */
 .streak-flame {
-  filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.5));
+  filter: drop-shadow(0 0 10px rgba(132, 204, 22, 0.5));
   animation: flicker 2s ease-in-out infinite alternate;
 }
 
@@ -110,20 +137,24 @@ body {
   50% { opacity: 0.9; transform: scale(1.05); }
 }
 
+/* XP Pill */
 .xp-pill {
-  @apply bg-gradient-primary text-white px-3 py-1 rounded-full text-sm font-bold
+  @apply bg-primary text-black px-3 py-1 rounded-full text-sm font-bold
          shadow-glow animate-pulse;
 }
 
+/* Progress Ring */
 .progress-ring {
   @apply w-16 h-16;
 }
 
+/* Level Badge */
 .level-badge {
-  @apply bg-accent text-white w-8 h-8 rounded-full flex items-center justify-center
-         font-bold text-sm shadow-glow-success;
+  @apply bg-primary text-black w-8 h-8 rounded-full flex items-center justify-center
+         font-bold text-sm shadow-glow;
 }
 
+/* Animations */
 @keyframes tilt {
   0%, 100% { transform: rotate(0deg); }
   25% { transform: rotate(2deg); }
@@ -140,6 +171,11 @@ body {
   100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
 }
 
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
@@ -152,6 +188,11 @@ body {
   animation: confetti 3s cubic-bezier(0.4, 0, 1, 1) infinite;
 }
 
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+/* Scrollbar Hide */
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -161,10 +202,29 @@ body {
   display: none;
 }
 
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-light);
+}
+
 /* Mobile optimizations */
 @media (max-width: 768px) {
   .btn-primary, .btn-secondary {
-    @apply py-2 text-sm;
+    @apply py-2.5 text-sm;
   }
   
   .glass-card {
@@ -185,6 +245,12 @@ body {
 @media (prefers-contrast: high) {
   .glass-card {
     border: 2px solid var(--primary);
-    background: var(--card-bg);
+    background: var(--background-card);
   }
+}
+
+/* Selection */
+::selection {
+  background: rgba(132, 204, 22, 0.3);
+  color: white;
 }
